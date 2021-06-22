@@ -14,7 +14,7 @@ module.exports = {
     login: {
         type: "object",
         properties: {
-            email: { type: "string" },
+            username: { type: "string" },
             password: { type: "string" },
         },
     },

@@ -5,9 +5,9 @@ const ErrorDump = require("../error-dump");
 const userService = require("../service/user");
 
 function Initialize(passport) {
-    const authenticateCallback = async (email, password, done) => {
+    const authenticateCallback = async (username, password, done) => {
         try {
-            const user = await userService.authenticate(email, password);
+            const user = await userService.authenticate(username, password);
             if (!user) {
                 return done(null, false, { message: "User not found" });
             }

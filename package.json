@@ -11,7 +11,7 @@
         "test-coverage": "nyc npm test",
         "watch-dev": "set NODE_ENV=development&& nodemon src/server.js",
         "dev": "set NODE_ENV=development&& node src/server.js",
-        "prod": "set NODE_ENV=production&& node src/server.js"
+        "prod": "set NODE_ENV=production&& node src/sergit ver.js"
     },
     "dependencies": {
         "body-parser": "^1.19.0",

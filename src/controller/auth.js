@@ -27,10 +27,11 @@ class AuthController {
 
     async register(req, res) {
         try {
-            const user = await this.userService.register(req.body);
+            const user = await this.userService.create(req.body);
 
             const userData = {
                 userId: user._id,
+                name: user.name,
             };
             const accessToken = jwt.sign(userData, config.ACCESS_TOKEN_SECRET, {
                 expiresIn: `${accessTokenExpIn}s`,
@@ -86,7 +87,7 @@ class AuthController {
         try {
             const userData = {
                 userId: req.user._id,
-                name: user.name,
+                name: req.user.name,
             };
             const accessToken = jwt.sign(userData, config.ACCESS_TOKEN_SECRET, {
                 expiresIn: `${accessTokenExpIn}s`,
@@ -106,7 +107,7 @@ class AuthController {
     }
     async error(req, res) {
         // LOGIN FAILED
-        res.status(404).send(dro.response(null, "Authentication error"));
+        res.status(404).send(dro.errorResponse("Authentication error"));
     }
 
     async refresh(req, res) {
